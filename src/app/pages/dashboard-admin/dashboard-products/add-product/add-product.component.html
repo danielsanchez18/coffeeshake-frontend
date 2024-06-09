@@ -1,0 +1,105 @@
+<div class="m-3 sm:max-w-lg sm:w-full sm:mx-auto">
+  <div class="flex flex-col bg-white border shadow-sm pointer-events-auto rounded-xl">
+    <div class="flex items-center justify-between px-4 py-3 border-b">
+      <h3 class="font-bold text-gray-800">
+        Agregar Producto
+      </h3>
+      <button type="button"
+        class="flex items-center justify-center text-sm font-semibold text-gray-800 border border-transparent rounded-full size-7 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
+        data-hs-overlay="#modal-add-product">
+        <span class="sr-only">Close</span>
+        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <form [formGroup]="productForm" (ngSubmit)="submit()">
+      <div class="flex flex-col p-10 py-6">
+        <label class="mb-2 text-sm font-medium text-roman-coffe-800">Nombre:</label>
+        <input type="text" formControlName="nameProduct"
+          class="block w-full px-4 py-2.5 text-sm border-gray-200 rounded-lg focus:border-roman-coffe-500 focus:ring-roman-coffe-500 disabled:opacity-50 disabled:pointer-events-none"
+          placeholder="Ingrese nombre del producto">
+        <div *ngIf="productForm.get('nameProduct')?.invalid && (productForm.get('nameProduct')?.dirty || productForm.get('nameProduct')?.touched)" class="mt-1 text-sm text-red-600">
+          Nombre es requerido.
+        </div>
+
+        <label class="mt-4 mb-2 text-sm font-medium text-roman-coffe-800">Descripción:</label>
+        <input type="text" formControlName="description"
+          class="block w-full px-4 py-2.5 text-sm border-gray-200 rounded-lg focus:border-roman-coffe-500 focus:ring-roman-coffe-500 disabled:opacity-50 disabled:pointer-events-none"
+          placeholder="Ingrese descripción del producto">
+        <div *ngIf="productForm.get('description')?.invalid && (productForm.get('description')?.dirty || productForm.get('description')?.touched)" class="mt-1 text-sm text-red-600">
+          Descripción es requerida.
+        </div>
+
+        <label class="mt-4 mb-2 text-sm font-medium text-roman-coffe-800">Precio:</label>
+        <div class="relative text-sm">
+          <input type="number" min="0" formControlName="price"
+            class="block w-full px-4 py-2.5 text-sm border-gray-200 rounded-lg shadow-sm ps-10 pe-16 focus:z-10 focus:border-roman-coffe-500 focus:ring-roman-coffe-500 disabled:opacity-50 disabled:pointer-events-none"
+            placeholder="0.00">
+          <div class="absolute inset-y-0 z-20 flex items-center pointer-events-none start-0 ps-4">
+            <span class="text-gray-500">S/.</span>
+          </div>
+          <div class="absolute inset-y-0 z-20 flex items-center pointer-events-none end-0 pe-4">
+            <span class="text-gray-500">PEN</span>
+          </div>
+        </div>
+        <div *ngIf="productForm.get('price')?.invalid && (productForm.get('price')?.dirty || productForm.get('price')?.touched)" class="mt-1 text-sm text-red-600">
+          Precio es requerido y debe ser mayor que 0.
+        </div>
+
+        <label class="mt-4 mb-2 text-sm font-medium text-roman-coffe-800">Imagen:</label>
+        <input type="text" formControlName="image"
+          class="block w-full px-4 py-2.5 text-sm border-gray-200 rounded-lg focus:border-roman-coffe-500 focus:ring-roman-coffe-500 disabled:opacity-50 disabled:pointer-events-none"
+          placeholder="Imagen">
+        <!-- <input type="file" formControlName="image"
+          class="block w-full text-sm border border-gray-200 rounded-lg shadow-sm focus:z-10 focus:border-roman-coffe-500 focus:ring-roman-coffe-500 disabled:opacity-50 disabled:pointer-events-none file:bg-roman-coffe-50 file:border-0 file:me-4 file:py-2.5 file:px-4"> -->
+
+        <label class="mt-4 mb-2 text-sm font-medium text-roman-coffe-800">Categoría:</label>
+        <select formControlName="category"
+          class="block w-full px-4 py-2.5 uppercase text-sm border-gray-200 rounded-lg focus:border-roman-coffe-500 focus:ring-roman-coffe-500 disabled:opacity-50 disabled:pointer-events-none">
+          <option *ngFor="let category of categories" [ngValue]=category class="uppercase">{{ category.nameCategory }}</option>
+        </select>
+
+        <!-- <div class="relative">
+          <select formControlName="category" data-hs-select='{
+            "placeholder": "Seleccione una opción",
+            "toggleTag": "<button type=\"button\"></button>",
+            "toggleClasses": "capitalize hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 relative py-2 px-4 pe-9 flex text-nowrap w-full cursor-pointer bg-white border border-gray-200 rounded-lg text-start text-sm focus:border-roman-coffe-500 focus:ring-roman-coffe-500 before:absolute before:inset-0 before:z-[1]",
+            "dropdownClasses": "capitalize mt-2 z-50 w-full h-72 p-1 space-y-0.5 bg-white border border-gray-200 rounded-lg overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300",
+            "optionClasses": "capitalize py-2 px-4 w-full text-sm text-gray-800 cursor-pointer hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100",
+            "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"hidden hs-selected:block\"><svg class=\"flex-shrink-0 size-3.5 text-roman-coffe-600\" xmlns=\"http:.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg></span></div>",
+            "extraMarkup": "<div class=\"absolute top-1/2 end-3 -translate-y-1/2\"><svg class=\"flex-shrink-0 size-3.5 text-gray-500\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m7 15 5 5 5-5\"/><path d=\"m7 9 5-5 5 5\"/></svg></div>"
+            }' class="hidden">
+
+            <option *ngFor="let category of categories" [ngValue]="category">{{ category.nameCategory }}</option>
+          </select>
+
+          <div class="absolute top-1/2 end-2.5 -translate-y-1/2">
+            <svg class="flex-shrink-0 text-gray-500 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m7 15 5 5 5-5"></path>
+              <path d="m7 9 5-5 5 5"></path>
+            </svg>
+          </div>
+        </div> -->
+
+        <div *ngIf="productForm.get('category')?.invalid && (productForm.get('category')?.dirty || productForm.get('category')?.touched)" class="mt-1 text-sm text-red-600">
+          Categoría es requerida.
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end px-4 py-3 border-t gap-x-2">
+        <button type="reset"
+          class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+          data-hs-overlay="#modal-add-product">
+          Cancelar
+        </button>
+        <button type="submit" [disabled]="productForm.invalid"
+          class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white border border-transparent rounded-lg bg-roman-coffe-600 gap-x-2 hover:bg-roman-coffe-700 disabled:opacity-50 disabled:pointer-events-none">
+          Registar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

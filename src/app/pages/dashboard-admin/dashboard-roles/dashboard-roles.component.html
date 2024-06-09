@@ -1,0 +1,93 @@
+<style>
+  section {
+  width: calc(100vw - 230px);
+}
+</style>
+
+<section class="px-10 py-10">
+  <div class="flex items-center justify-between">
+    <h1 class="text-lg font-semibold">ROLES</h1>
+    <div>
+      <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white border border-transparent rounded-lg bg-roman-coffe-600 gap-x-2 hover:bg-roman-coffe-700 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#hs-basic-modal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+        Nuevo rol
+      </button>
+      <div id="hs-basic-modal" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-50 start-0 z-[80] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+        <div class="m-3 sm:max-w-lg sm:w-full sm:mx-auto">
+          <div class="flex flex-col bg-white border shadow-sm pointer-events-auto rounded-xl">
+            <div class="flex items-center justify-between px-4 py-3 border-b">
+              <h3 class="font-bold text-gray-800">
+                Modal title
+              </h3>
+              <button type="button" class="flex items-center justify-center text-sm font-semibold text-gray-800 border border-transparent rounded-full size-7 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#hs-basic-modal">
+                <span class="sr-only">Close</span>
+                <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="p-4 overflow-y-auto">
+              <p class="mt-1 text-gray-800">
+                This is a wider card with supporting text below as a natural lead-in to additional content.
+              </p>
+            </div>
+            <div class="flex items-center justify-end px-4 py-3 border-t gap-x-2">
+              <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#hs-basic-modal">
+                Close
+              </button>
+              <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white border border-transparent rounded-lg bg-roman-coffe-600 gap-x-2 hover:bg-roman-coffe-700 disabled:opacity-50 disabled:pointer-events-none">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col py-8">
+    <div class="-m-1.5 overflow-x-auto">
+      <div class="p-1.5 min-w-full inline-block align-middle">
+        <div class="overflow-hidden border shadow rounded-xl">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-roman-coffe-50">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase text-start">ID ROL</th>
+                <th scope="col" class="px-6 py-3 text-xs font-medium text-center text-gray-500 uppercase">NOMBRE</th>
+                <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase text-end">ACCION</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">1</td>
+                <td class="px-6 py-4 text-sm text-center text-gray-800 whitespace-nowrap">Administrador</td>
+                <td class="px-6 py-4 space-x-2 text-sm font-medium whitespace-nowrap text-end">
+                  <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#hs-basic-modal">
+                    Editar
+                  </button>
+                  <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white border border-transparent rounded-lg bg-roman-coffe-600 gap-x-2 hover:bg-roman-coffe-700 disabled:opacity-50 disabled:pointer-events-none">
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">1</td>
+                <td class="px-6 py-4 text-sm text-center text-gray-800 whitespace-nowrap">Administrador</td>
+                <td class="px-6 py-4 space-x-2 text-sm font-medium whitespace-nowrap text-end">
+                  <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#hs-basic-modal">
+                    Editar
+                  </button>
+                  <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white border border-transparent rounded-lg bg-roman-coffe-600 gap-x-2 hover:bg-roman-coffe-700 disabled:opacity-50 disabled:pointer-events-none">
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

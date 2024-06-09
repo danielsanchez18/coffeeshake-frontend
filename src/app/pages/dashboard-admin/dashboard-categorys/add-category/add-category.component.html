@@ -1,0 +1,40 @@
+<div class="m-3 sm:max-w-lg sm:w-full sm:mx-auto">
+  <div class="flex flex-col bg-white border shadow-sm pointer-events-auto rounded-xl">
+    <div class="flex items-center justify-between px-4 py-3 border-b">
+      <h3 class="font-bold text-gray-800">
+        Agregar Categoría
+      </h3>
+      <button type="button" class="flex items-center justify-center text-sm font-semibold text-gray-800 border border-transparent rounded-full size-7 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#modal-add-category">
+        <span class="sr-only">Close</span>
+        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <form [formGroup]="categoryForm" (ngSubmit)="submit()">
+      <div class="flex flex-col p-10 py-6 overflow-y-auto">
+        <label for="nameCategory" class="mb-2 text-sm font-medium text-roman-coffe-800">Nombre:</label>
+        <input type="text" id="nameCategory" formControlName="nameCategory"
+          class="block w-full px-4 py-2.5 text-sm border-gray-200 rounded-lg focus:border-roman-coffe-500 focus:ring-roman-coffe-500 disabled:opacity-50 disabled:pointer-events-none"
+          placeholder="Ingrese nombre de categoría">
+
+          <div *ngIf="categoryForm.get('nameCategory')?.invalid && (categoryForm.get('nameCategory')?.dirty || categoryForm.get('nameCategory')?.touched)" class="mx-5 mt-2 text-sm text-red-600">
+            El nombre es requerido.
+          </div>
+        </div>
+      <div class="flex items-center justify-end px-4 py-3 border-t gap-x-2">
+        <button type="reset"
+          class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+          data-hs-overlay="#hs-basic-modal">
+          Limpiar
+        </button>
+        <button type="submit"
+          class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white border border-transparent rounded-lg bg-roman-coffe-600 gap-x-2 hover:bg-roman-coffe-700 disabled:opacity-50 disabled:pointer-events-none"
+          [disabled]="categoryForm.invalid">
+          Registar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

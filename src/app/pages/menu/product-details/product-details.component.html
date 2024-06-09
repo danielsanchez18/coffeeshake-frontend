@@ -1,0 +1,97 @@
+<section class="max-w-[85rem] w-full h-[30rem] mx-auto mt-5 px-4 sm:items-center sm:justify-between sm:px-6 lg:px-8"
+  *ngIf="product">
+  <ol class="flex items-center whitespace-nowrap">
+    <li class="inline-flex items-center">
+      <a class="flex items-center text-base text-gray-500 uppercase hover:text-roman-coffe-950 focus:outline-none focus:text-roman-coffe-950 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
+        href="/menu">
+        Menu
+      </a>
+      <svg class="flex-shrink-0 mx-2 overflow-visible text-gray-400 size-4 dark:text-neutral-600"
+        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18 6-6-6-6"></path>
+      </svg>
+    </li>
+    <li class="inline-flex items-center">
+      <a class="flex items-center text-base text-gray-500 uppercase hover:text-roman-coffe-950 focus:outline-none focus:text-roman-coffe-950 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500"
+        href="/menu/{{product.category.nameCategory}}">
+        {{product.category.nameCategory}}
+        <svg class="flex-shrink-0 mx-2 overflow-visible text-gray-400 size-4 dark:text-neutral-600"
+          xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m9 18 6-6-6-6"></path>
+        </svg>
+      </a>
+    </li>
+    <li class="inline-flex items-center text-base font-semibold text-gray-800 uppercase truncate dark:text-neutral-200"
+      aria-current="page">
+      {{product.nameProduct}}
+    </li>
+  </ol>
+  <hr class="mt-2">
+
+  <form action="">
+
+    <div class="flex justify-center py-10 h-[60vh]">
+      <div class="flex items-center gap-10">
+        <div class="rounded-full h-60 w-60">
+          <img class="p-8 border rounded-full h-60 w-60"
+            src="https://www.nescafe.com/ec/sites/default/files/2023-08/Nes_Web3_Article_Header_Frappe_1448x1240.png"
+            alt="">
+        </div>
+        <div class="flex flex-col gap-2">
+          <h1 class="text-2xl font-semibold text-roman-coffe-900">{{ product.nameProduct }}</h1>
+          <p class="text-lg text-gray-700">{{product.description}}</p>
+
+          <p class="text-lg text-gray-700">{{product.price | currency}}</p>
+          <div class="flex items-center gap-5">
+            <p>Cantidad:</p>
+            <!-- Input Number -->
+            <div class="py-2 px-3 inline-block bg-white border border-gray-200 rounded-lg"
+              data-hs-input-number='{"max": 10, "min": 1}'>
+              <div class="flex items-center gap-x-1.5">
+                <button type="button"
+                  class="size-6 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                  data-hs-input-number-decrement="">
+                  <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                  </svg>
+                </button>
+                <input class="p-0 w-6 bg-transparent border-0 text-gray-800 text-center focus:ring-0" type="number"
+                  min="1" max="10" value="1" data-hs-input-number-input="">
+                <button type="button"
+                  class="size-6 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                  data-hs-input-number-increment="">
+                  <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5v14"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <!-- End Input Number -->
+          </div>
+          <button type="submit"
+            class="flex items-center gap-3 px-4 py-2 mt-2 text-white border rounded-md border-roman-coffe-800 w-fit bg-roman-coffe-700 hover:text-white hover:bg-roman-coffe-900">
+            <p class="font-semibold">AGREGAR</p>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="flex justify-end">
+    <a class="inline-flex items-center text-base text-gray-900 hover:underline hover:underline-offset-4 gap-x-1 hover:text-roman-coffe-600 dark:text-neutral-200 dark:hover:text-blue-500"
+      href="#">
+      <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6" />
+      </svg>
+      Back to home
+    </a>
+  </div>
+</section>

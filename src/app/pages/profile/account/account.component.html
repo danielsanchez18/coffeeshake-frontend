@@ -1,0 +1,26 @@
+<div class="flex flex-wrap items-center justify-center gap-2 pt-8 my-10 sm:gap-20">
+  <div class="flex flex-col items-center justify-center gap-3 pb-8">
+    <img src="{{user.profile}}" alt="{{user.profile}}" class="object-cover w-40 h-40 border-4 rounded-full ">
+    <div class="text-center">
+      <p class="text-lg font-semibold text-roman-coffe-900">{{user.names}} {{user.lastnames}}</p>
+      <p class="text-base text-gray-500">ID: 000{{user.idUser}}</p>
+    </div>
+  </div>
+  <div class="grid gap-2 gap-x-8 sm:text-lg" style="grid-template-columns: auto auto;">
+    <p> Usuario: </p>
+    <p> {{user.username}}</p>
+    <!-- <p>Contraseña:</p>
+    <p>{{user.password}}</p> -->
+    <p>Teléfono:</p>
+    <p>{{user.phone}}</p>
+    <p>Dirección:</p>
+    <p>{{user.address}}</p>
+  </div>
+</div>
+
+<div class="flex justify-center gap-20 mb-10 sm:text-lg">
+  <a routerLink="/dashboard/home" class="font-medium text-roman-coffe-950 hover:underline hover:underline-offset-4 hover:text-roman-coffe-600 ">Ir a dashboard</a>
+  <a *ngIf="isLoggedIn"
+  (click)="logout()"
+  class="font-medium text-roman-coffe-950 hover:underline hover:underline-offset-4 hover:text-roman-coffe-600 ">Cerrar Sesión</a>
+</div>

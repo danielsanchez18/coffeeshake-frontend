@@ -1,0 +1,22 @@
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Internet Explorer 10+ */
+input[type="number"] {
+    -ms-appearance: none;
+}
+
+/* Estilos para quitar el borde negro al hacer foco */
+input[type="number"]:focus {
+  outline: none;
+  border: none;
+}

@@ -1,0 +1,80 @@
+<div class="m-3 sm:max-w-lg sm:w-full sm:mx-auto">
+  <div class="flex flex-col bg-white border shadow-sm pointer-events-auto rounded-xl">
+    <div class="flex items-center justify-between px-4 py-3 border-b">
+      <h3 class="font-bold text-gray-800">
+        Editar Producto
+      </h3>
+      <button type="button"
+        class="flex items-center justify-center text-sm font-semibold text-gray-800 border border-transparent rounded-full size-7 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
+        data-hs-overlay="#modal-edit-product">
+        <span class="sr-only">Close</span>
+        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- <form [formGroup]="editProductForm" (ngSubmit)="submit()"> -->
+    <form>
+      <div class="flex flex-col p-10 py-6 overflow-y-auto">
+        <label class="mb-2 text-sm font-medium text-roman-coffe-800 text-start">Nombre:</label>
+        <input type="text" formControlName="nameProduct"
+          class="block w-full px-4 py-2.5 text-sm border-gray-200 rounded-lg focus:border-roman-coffe-500 focus:ring-roman-coffe-500 disabled:opacity-50 disabled:pointer-events-none"
+          placeholder="Ingrese nombre del producto">
+
+        <label class="mt-4 mb-2 text-sm font-medium text-roman-coffe-800 text-start">Descripción:</label>
+        <input type="text" formControlName="description"
+          class="block w-full px-4 py-2.5 text-sm border-gray-200 rounded-lg focus:border-roman-coffe-500 focus:ring-roman-coffe-500 disabled:opacity-50 disabled:pointer-events-none"
+          placeholder="Ingrese descripción del producto">
+
+        <label class="mt-4 mb-2 text-sm font-medium text-roman-coffe-800 text-start">Precio:</label>
+        <div class="relative text-sm">
+          <input type="number" min="0" formControlName="price"
+            class="block w-full px-4 py-2.5 text-sm border-gray-200 rounded-lg shadow-sm ps-10 pe-16 focus:z-10 focus:border-roman-coffe-500 focus:ring-roman-coffe-500 disabled:opacity-50 disabled:pointer-events-none"
+            placeholder="0.00">
+          <div class="absolute inset-y-0 z-20 flex items-center pointer-events-none start-0 ps-4">
+            <span class="text-gray-500">S/.</span>
+          </div>
+          <div class="absolute inset-y-0 z-20 flex items-center pointer-events-none end-0 pe-4">
+            <span class="text-gray-500">PEN</span>
+          </div>
+        </div>
+
+        <label class="mt-4 mb-2 text-sm font-medium text-roman-coffe-800 text-start">Imagen:</label>
+        <input type="text" formControlName="image"
+          class="block w-full px-4 py-2.5 text-sm border-gray-200 rounded-lg focus:border-roman-coffe-500 focus:ring-roman-coffe-500 disabled:opacity-50 disabled:pointer-events-none"
+          placeholder="Imagen">
+        <!-- <input type="file" formControlName="image"
+          class="block w-full text-sm border border-gray-200 rounded-lg shadow-sm focus:z-10 focus:border-roman-coffe-500 focus:ring-roman-coffe-500 disabled:opacity-50 disabled:pointer-events-none file:bg-roman-coffe-50 file:border-0 file:me-4 file:py-2.5 file:px-4"> -->
+
+        <label class="mt-4 mb-2 text-sm font-medium text-roman-coffe-800 text-start">Categoría:</label>
+        <select formControlName="category"
+          class="block w-full px-4 py-2.5 uppercase text-sm border-gray-200 rounded-lg focus:border-roman-coffe-500 focus:ring-roman-coffe-500 disabled:opacity-50 disabled:pointer-events-none">
+          <option value="" disabled selected>Seleccione una opción...</option> <!-- This is the placeholder -->
+          <option *ngFor="let category of categories" [ngValue]="category" class="uppercase"> {{ category.nameCategory }} </option>
+        </select>
+
+        <div class="flex justify-center mt-5 gap-x-10">
+          <label class="mt-4 mb-2 text-sm font-medium text-roman-coffe-800 text-start">Disponible:</label>
+          <div class="flex items-center mt-2.5">
+            <label for="hs-basic-with-description" class="text-sm text-gray-500 me-3">No</label>
+            <input type="checkbox" formControlName="enabled" value="true"
+            id="hs-basic-with-description" class="relative w-[3.25rem] h-7 p-px bg-gray-100 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-400 focus:ring-roman-coffe-600 disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-roman-coffe-600 checked:border-roman-coffe-600 focus:checked:border-roman-coffe-600
+            before:inline-block before:size-6 before:bg-white checked:before:bg-roman-coffe-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200">
+            <label for="hs-basic-with-description" class="text-sm text-gray-500 ms-3">Si</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end px-4 py-3 border-t gap-x-2">
+        <button type="reset" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#modal-edit-product">
+          Cancelar
+        </button>
+        <button type="submit" class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white border border-transparent rounded-lg bg-roman-coffe-600 gap-x-2 hover:bg-roman-coffe-700 disabled:opacity-50 disabled:pointer-events-none">
+          Aplicar Cambios
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<style>
+  section {
+  width: calc(100vw - 230px);
+}
+</style>
+
+<section class="px-10 py-10">
+  <div class="flex items-center justify-between">
+    <h1 class="text-lg font-semibold">PRODUCTOS</h1>
+    <div>
+      <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white border border-transparent rounded-lg bg-roman-coffe-600 gap-x-2 hover:bg-roman-coffe-700 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#modal-add-product">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+        Nuevo producto
+      </button>
+      <div
+        id="modal-add-product"
+        class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-20 start-0 z-[80] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+        <app-add-product></app-add-product>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col py-8">
+    <div class="-m-1.5 overflow-x-auto">
+      <div class="p-1.5 min-w-full inline-block align-middle">
+        <div class="overflow-hidden border shadow rounded-xl">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-roman-coffe-50">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-sm font-medium text-gray-700 uppercase text-start">NOMBRE</th>
+                <th scope="col" class="px-6 py-3 text-sm font-medium text-center text-gray-700 uppercase">PRECIO</th>
+                <th scope="col" class="px-6 py-3 text-sm font-medium text-gray-700 uppercase text-start">CATEGORIA</th>
+                <th scope="col" class="px-6 py-3 text-sm font-medium text-gray-700 uppercase text-end">ACCION</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr *ngFor="let product of products">
+                <td class="px-6 py-3 text-sm font-medium text-gray-800 whitespace-nowrap">{{ product.nameProduct }}</td>
+                <td class="px-6 py-3 text-sm text-center text-gray-800 capitalize whitespace-nowrap">{{ product.price | currency }}</td>
+                <td class="px-6 py-3 text-sm text-gray-800 capitalize whitespace-nowrap">{{ product.category.nameCategory }}</td>
+                <td class="px-6 py-3 space-x-2 text-sm font-medium whitespace-nowrap text-end">
+                  <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-semibold border rounded-lg text-roman-coffe-900 border-roman-coffe-700 gap-x-2 hover:bg-roman-coffe-50 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#modal-details-product"
+                  (click)="selectProduct(product)">
+                    Ver detalles
+                  </button>
+                  <div id="modal-details-product" class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden size-full fixed top-20 start-0 z-[80] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                    <app-details-product [product]="selectedProduct"></app-details-product>
+                  </div>
+
+                  <div id="modal-edit-product" class="hs-overlay hidden size-full fixed top-5 start-0 z-[90] overflow-x-hidden overflow-y-auto pointer-events-none">
+                    <app-edit-product [product]="selectedProduct"></app-edit-product>
+                  </div>
+
+                  <div id="modal-delete-product" class="hs-overlay hidden size-full fixed top-32 start-0 z-[100] overflow-x-hidden overflow-y-auto pointer-events-none">
+                    <app-delete-product [product]="selectedProduct"></app-delete-product>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

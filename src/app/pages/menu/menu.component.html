@@ -1,0 +1,30 @@
+<nav class="flex flex-col max-w-[85rem] w-full mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="flex pt-8 border-b w-full overflow-x-auto">
+    <!-- <a href="" class="inline-flex px-4 mr-4 mb-3 py-1 whitespace-nowrap bg-roman-coffe-900 border-roman-coffe-900 border rounded-full text-center font-semibold text-white">TODO</a>
+    <ng-container *ngFor="let category of categories">
+      <a href="" class="inline-flex px-4 mx-4 mb-3 py-1 border whitespace-nowrap border-roman-coffe-100 bg-roman-coffe-100 rounded-full text-center font-medium uppercase text-roman-coffe-900">{{ category.nameCategory }}</a>
+    </ng-container> -->
+
+    <a routerLink="/menu" class="inline-flex text-gray-400 px-8 pb-3 focus:text-black whitespace-nowrap uppercase hover:border-b hover:border-roman-coffe-800 hover:font-semibold hover:text-roman-coffe-900">todo</a>
+    <ng-container *ngFor="let category of categories">
+      <a routerLink="{{category.nameCategory}}" class="inline-flex px-8 pb-3 whitespace-nowrap hover:border-b uppercase hover:border-roman-coffe-800 hover:font-semibold text-gray-400 hover:text-roman-coffe-900">{{ category.nameCategory }}</a>
+    </ng-container>
+  </div>
+<!--
+  <ng-container *ngFor="let product of products">
+  <div class="flex items-center sm:px-10 py-10 text-xl uppercase text-roman-coffe-800 after:flex-1 after:border-t after:border-gray-200 after:ms-6 font-medium">{{ product.category.nameCategory }}</div>
+
+  <div class="flex gap-5 flex-wrap lg:gap-8 justify-around">
+      <a [routerLink]="['/product-detail', product.idProduct]" id="contain-img" class="flex sm:flex-col sm:items-center justify-between sm:w-60 border border-roman-coffe-100 rounded-2xl">
+        <div class="flex justify-center sm:h-52 h-32 w-auto rounded-t-2xl sm:my-8 my-5">
+          <img class="sm:h-52 h-32 w-auto object-cover" src="https://www.nescafe.com/ec/sites/default/files/2023-08/Nes_Web3_Article_Header_Frappe_1448x1240.png" alt="">
+        </div>
+        <div class="flex flex-col items-center w-56 sm:w-full rounded-r-2xl sm:rounded-tr-none sm:rounded-b-2xl justify-center bg-white sm:h-auto">
+          <h1 class="font-semibold h-20 uppercase text-center leading-5 text-lg sm:p-5 p-2 flex items-center">{{ product.nameProduct }}</h1>
+          <p class="text-gray-700 mb-5">{{ product.price | currency }}</p>
+        </div>
+      </a>
+  </div>
+  </ng-container> -->
+  <router-outlet></router-outlet>
+</nav>

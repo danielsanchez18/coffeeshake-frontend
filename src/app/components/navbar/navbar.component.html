@@ -1,0 +1,65 @@
+<section>
+  <header class="z-50 flex flex-wrap w-full py-3 text-sm bg-white border-b border-gray-200 sm:justify-start sm:flex-nowrap sm:py-0 dark:bg-neutral-800 dark:border-neutral-700">
+    <nav class="relative max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8" aria-label="Global">
+      <div class="flex items-center justify-between">
+        <a class="flex-none text-xl font-semibold dark:text-white" routerLink="/">Coffeeshake</a>
+        <div class="sm:hidden">
+          <button type="button" class="flex items-center justify-center text-sm font-semibold text-gray-800 border border-gray-200 rounded-lg hs-collapse-toggle size-9 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:border-neutral-700 dark:hover:bg-neutral-700" data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation" aria-label="Toggle navigation">
+            <svg class="hs-collapse-open:hidden size-4" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+            <svg class="flex-shrink-0 hidden hs-collapse-open:block size-4" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="navbar-collapse-with-animation" class="hidden overflow-hidden transition-all duration-300 hs-collapse basis-full grow sm:block">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-end sm:ps-7">
+          <a class="py-3 font-medium text-gray-400 uppercase ps-px sm:px-5 hover:text-roman-coffe-950 dark:text-neutral-400 dark:hover:text-white" routerLink="home" aria-current="page" routerLinkActive="active">Inicio</a>
+          <a class="py-3 font-medium text-gray-400 uppercase ps-px sm:px-5 hover:text-roman-coffe-950 dark:text-neutral-400 dark:hover:text-white" routerLink="menu" routerLinkActive="active">Menú</a>
+          <a class="py-3 font-medium text-gray-400 uppercase ps-px sm:px-5 hover:text-roman-coffe-950 dark:text-neutral-400 dark:hover:text-white" routerLink="footer" routerLinkActive="active">Contacto</a>
+          @if (!isLoggedIn){
+            <a class="flex items-center py-2 font-medium text-gray-400 uppercase gap-x-2 hover:text-roman-coffe-950 sm:border-s sm:border-gray-300 sm:py-0 sm:ms-4 sm:my-6 sm:ps-6 dark:border-neutral-400 dark:text-neutral-400 dark:hover:text-white" routerLink="login" routerLinkActive="active">
+              <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+              </svg>
+              Iniciar Sesión
+            </a>
+          }
+          @if (isLoggedIn) {
+            <a routerLink="profile/shopping-cart" class="text-gray-500 sm:my-6 sm:ps-6 sm:border-s sm:border-gray-300" routerLinkActive="active">
+              <div class="flex-shrink-0 block group">
+                <div class="flex items-center">
+                  <img class="inline-block flex-shrink-0 size-[35px] rounded-full" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Image Description">
+                  <div class="ms-3">
+                    <h3 class="hover:text-roman-coffe-950 dark:text-roman-coffe-200 dark:hover:text-white">{{ login.getUser().names }} {{ login.getUser().lastnames }}</h3>
+                  </div>
+                </div>
+              </div>
+            </a>
+          }
+          <!-- <button type="button" class="flex items-center block pl-3 font-medium text-gray-400 hs-dark-mode-active:hidden hs-dark-mode group hover:text-roman-coffe-950 dark:text-neutral-400 dark:hover:text-white" data-hs-theme-click-value="dark">
+            <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+          </button>
+          <button type="button" class="flex items-center hidden pl-3 font-medium text-gray-400 hs-dark-mode-active:block hs-dark-mode group hover:text-roman-coffe-950 dark:text-neutral-400 dark:hover:text-white" data-hs-theme-click-value="light">
+            <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2"></path>
+              <path d="M12 20v2"></path>
+              <path d="m4.93 4.93 1.41 1.41"></path>
+              <path d="m17.66 17.66 1.41 1.41"></path>
+              <path d="M2 12h2"></path>
+              <path d="M20 12h2"></path>
+              <path d="m6.34 17.66-1.41 1.41"></path>
+              <path d="m19.07 4.93-1.41 1.41"></path>
+            </svg>
+          </button> -->
+        </div>
+      </div>
+    </nav>
+  </header>
+
+</section>
